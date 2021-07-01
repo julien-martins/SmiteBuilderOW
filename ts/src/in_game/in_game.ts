@@ -74,12 +74,16 @@ class InGame extends AppWindow {
     for(var i = 0; i < gods.length; ++i) {
       var god = document.createElement("div");
       var img = document.createElement("img");
-      var name = document.createElement("h1");
+      var name = document.createElement("h4");
       var id = gods[i].id.toString();
       god.setAttribute("id", id);
+      god.setAttribute("class", "card");
+      //god.style.width = "200px";
       god.addEventListener('click', this.clickGod, false);
       img.src = gods[i].godIcon_URL;
+      img.setAttribute("class", "card-text")
       name.textContent = gods[i].Name;
+      name.setAttribute("class", "card-title");
       god.appendChild(name);
       god.appendChild(img);
       liste.append(god);
