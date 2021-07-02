@@ -146,22 +146,70 @@ button.logCopy:hover {
 }
 
 #search_box {
-  width: 100px;
+  width: 200px;
+  margin-top: 10px;
 }
 
 #liste {
   overflow-y: scroll;
-  height: 300px;
+  height: 600px;
 }
 
 #liste img {
   width: 128px;
   height: 128px;
+  text-align: center;
 }
 
 #liste div {
   display: inline-block;
   width: 150px;
+  margin: 10px;
+}
+
+#liste div h5{
+  text-align: center;
+}
+
+#select_god img {
+  display: inline-block;
+}
+
+#select_god h1 {
+  display: inline-block;
+  margin-top: 0px;
+}
+
+#select_god #list_build {
+  overflow-y: scroll;
+  width: 74%;
+  height: 300px;
+}
+
+#select_god #list_build .card{
+  display: inline-block;
+  height: 100px;
+}
+
+#select_god #list_build .card-body{
+  display:block;
+  width: 70%;
+  height: 100%;
+  background-color: red;
+  float: left;
+}
+
+#select_god #list_build .card-overlay{
+  display: inline-block;
+  width: 30%;
+  height: 100%;
+  background-color: green;
+}
+
+#select_god #list_build .card-overlay button{
+  display: block;
+  width: 100%;
+  height: 50%;
 }
 
 #build_maker #list_items {

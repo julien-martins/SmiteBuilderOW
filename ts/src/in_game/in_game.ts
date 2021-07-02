@@ -74,14 +74,14 @@ class InGame extends AppWindow {
     for(var i = 0; i < gods.length; ++i) {
       var god = document.createElement("div");
       var img = document.createElement("img");
-      var name = document.createElement("h4");
+      var name = document.createElement("h5");
       var id = gods[i].id.toString();
       god.setAttribute("id", id);
       god.setAttribute("class", "card");
-      //god.style.width = "200px";
+      god.style.width = "160px";
+      god.style.height = "180px";
       god.addEventListener('click', this.clickGod, false);
       img.src = gods[i].godIcon_URL;
-      img.setAttribute("class", "card-text")
       name.textContent = gods[i].Name;
       name.setAttribute("class", "card-title");
       god.appendChild(name);
@@ -98,7 +98,7 @@ class InGame extends AppWindow {
     var filterName = this.search_box.value.toUpperCase();
     
     for(var i = 0; i < li.length; i++) {
-      var name = li[i].querySelector('h1').textContent;
+      var name = li[i].querySelector('h5').textContent;
       if(name.toUpperCase().indexOf(filterName) > -1){
         li[i].style.display = "";
       } else {
@@ -116,6 +116,51 @@ class InGame extends AppWindow {
     select_god.querySelector('img').src = god.godIcon_URL;
 
     select_god.querySelector('button').id = god.id.toString(); 
+
+    // Initialize list of build of character
+
+    var list_build = select_god.querySelector('div');
+
+    for(var i = 0; i < 6; ++i)
+    {
+      var build = document.createElement('div');
+      var name = document.createElement('h5');
+      var desc = document.createElement('p');
+      var card_body = document.createElement('div');
+      var card_overlay = document.createElement('div');
+      var view_button = document.createElement('button');
+      var modify_button = document.createElement('button');
+
+      build.className = "card w-100";
+      name.className = "card-title";
+      card_body.className = "card-body";
+      desc.className = "card-text";
+      card_overlay.className = "card-overlay";
+      view_button.className = "btn btn-primary";
+      view_button.type = "button";
+      modify_button.className = "btn btn-primary";
+      modify_button.type = "button";
+
+      name.textContent = "Build " + i;
+      desc.textContent = "the description of build " + i;
+      view_button.appendChild(document.createTextNode("View Build"));
+      modify_button.appendChild(document.createTextNode("Modify Build"));
+
+      view_button.onclick = () => {
+        console.log("View Button");
+      };
+      modify_button.onclick = () => {
+        console.log("Modify Button")
+      };
+
+      card_body.appendChild(name);
+      card_body.appendChild(desc);
+      build.appendChild(card_body);
+      card_overlay.appendChild(view_button);
+      card_overlay.appendChild(modify_button);
+      build.appendChild(card_overlay);
+      list_build.appendChild(build);
+    }
 
     select_god.style.display = "";
   }
@@ -144,6 +189,14 @@ class InGame extends AppWindow {
     
   }
   
+  private viewButton(){
+    console.log('view button');
+  }
+
+  private modifyButton(){
+    console.log('modify button');
+  }
+
   private onInfoUpdates(info) {
     this.logLine(this._infoLog, info, false);
   }
